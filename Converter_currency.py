@@ -28,6 +28,9 @@ class Converter:
 
 
 
+
+
+
         # label for the text Currency Converter
         self.top_frame = Frame(self.window, bg = self.primary, width = 300, height = 80)
         self.top_frame.grid(row = 0, column = 0)
@@ -78,6 +81,36 @@ class Converter:
         self.time_label = Label(self.bottom_frame, text = '', font = ('Poppins 10 bold'))
         self.time_label.place(x = 5, y = 135)
 
+        # the clickable button for converting the currency
+        convert_button = Button(self.bottom_frame, text = 'CONVERT', bg = self.secondary, 
+                                fg = self.white, justify = CENTER, font = ('Poppins 10 bold'),
+                                  command = self.convert_currency)
+        convert_button.place(x = 5, y = 165)
+
+    def convert_currency(self):
+        try:
+            #getting currency from first and second combobox
+            self.source = self.from_currency_combo.get()
+            self.destination = self.to_currency_combo.get()
+
+            #getting amound from amount_entry
+            self.amount = self.amount_entry.get()
+
+            #sending a request to the Pair Conversion url and converting it to json
+            result = requests.get(f'https://v6.exchangerate-api.com/v6/d0c0d5e10cfe3d746be6fdde/pair/{self.source}/{self.destination}/{self.amount}').json()
+
+            #getting the conversion result from response result
+            converted_result = result['conversion_result']
+
+            #formatting the results
+            formatted_result = f'{self.amount} {self.source} = {converted_result} {self.destination}'
+
+            #adding text to the empty result and time labels
+            self.result_label.config(text = formatted_result)
+            self.time_label.config(text = 'Last updated,' + result['time_last_update_utc'])
+        
+        except:
+            showerror(title = 'Error', message = 'An error occurred! Fill all the required filed or check your internet connection.')
 
         
 
