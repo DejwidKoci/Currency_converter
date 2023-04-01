@@ -23,6 +23,22 @@ class Converter:
                                  font = ('Poppins 20 bold') )
         self.name_label.grid(row = 0, column = 0)
 
+        self.bottom_frame = Frame(self.window, width = 300, height = 250)
+        self.bottom_frame.grid(row = 1, column = 0)
+
+        self.from_currency_label = Label(self.bottom_frame, text = 'FROM: ',
+                                          font = ('Poppins 10 bold'), justify = LEFT)
+        self.from_currency_label.place(x = 5, y = 10)
+
+        to_currency_label = Label(self.bottom_frame, text = 'TO: ',
+                                   font = ('Poppins 10 bold'), justify = RIGHT)
+        to_currency_label.place(x = 160, y = 10)
+
+        amount_label = Label(self.bottom_frame, text = 'AMOUNT: ',
+                              font = ('Poppins 10 bold'), justify = LEFT)
+        amount_label.place(x = 5, y = 55)
+
+        
     def run(self):
         self.window.mainloop()
 
