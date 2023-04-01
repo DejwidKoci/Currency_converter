@@ -46,28 +46,40 @@ class Converter:
                                           font = ('Poppins 10 bold'), justify = LEFT)
         self.from_currency_label.place(x = 5, y = 10)
 
-        to_currency_label = Label(self.bottom_frame, text = 'TO: ',
+        self.to_currency_label = Label(self.bottom_frame, text = 'TO: ',
                                    font = ('Poppins 10 bold'), justify = RIGHT)
-        to_currency_label.place(x = 160, y = 10)
+        self.to_currency_label.place(x = 160, y = 10)
 
-        amount_label = Label(self.bottom_frame, text = 'AMOUNT: ',
+        self.amount_label = Label(self.bottom_frame, text = 'AMOUNT: ',
                               font = ('Poppins 10 bold'), justify = LEFT)
-        amount_label.place(x = 5, y = 55)
+        self.amount_label.place(x = 5, y = 55)
 
         #combobox for holding from_currencies
-        from_currency_combo = ttk.Combobox(self.bottom_frame,
+        self.from_currency_combo = ttk.Combobox(self.bottom_frame,
                                             values = list(self.currencies.keys()), width = 14,
                                               font = ('Poppins 10 bold'))
-        from_currency_combo.place(x = 5, y = 30)
+        self.from_currency_combo.place(x = 5, y = 30)
 
-        to_currency_combo = ttk.Combobox(self.bottom_frame,
+        self.to_currency_combo = ttk.Combobox(self.bottom_frame,
                                           values = list(self.currencies.keys()), width = 14,
                                             font = ('Poppins 10 bold'))
-        to_currency_combo.place(x = 160, y = 30)
+        self.to_currency_combo.place(x = 160, y = 30)
 
         # entry for amount
-        amount_entry = Entry(self.bottom_frame, width = 25, font = ('Poppins 15 bold'))
-        amount_entry.place(x = 5, y = 80)
+        self.amount_entry = Entry(self.bottom_frame, width = 25, font = ('Poppins 15 bold'))
+        self.amount_entry.place(x = 5, y = 80)
+
+        # an empty label for displaing the result
+        self.result_label = Label(self.bottom_frame, text = '', font = ('Poppins 10 bold'))
+        self.result_label.place(x = 5, y = 115)
+        
+
+        # an empty label for displaying the time
+        self.time_label = Label(self.bottom_frame, text = '', font = ('Poppins 10 bold'))
+        self.time_label.place(x = 5, y = 135)
+
+
+        
 
 
 
