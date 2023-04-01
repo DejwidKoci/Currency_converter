@@ -10,7 +10,19 @@ class Converter:
         self.window.geometry('310x340+500+200')
         self.window.title('Currency Converter')
         self.window.resizable(height = FALSE, width= FALSE)
-    
+
+        self.primary = '#081F4D'
+        self.secondary = '#0083FF'
+        self.white = '#FFFFFF'
+
+        self.top_frame = Frame(self.window, bg = self.primary, width = 300, height = 80)
+        self.top_frame.grid(row = 0, column = 0)
+
+        self.name_label = Label(self.top_frame, text = 'Currency Converter', bg = self.primary,
+                                 fg = self.white, padx = 24, pady = 30, justify = CENTER, 
+                                 font = ('Poppins 20 bold') )
+        self.name_label.grid(row = 0, column = 0)
+
     def run(self):
         self.window.mainloop()
 
