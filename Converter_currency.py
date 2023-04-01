@@ -27,10 +27,15 @@ class Converter:
         self.currencies = dict(self.response['conversion_rates'])
 
 
+        self.top()
+        self.botom()
+        self.combobox()
+        self.converted_amount()
+        self.press_button()
+    
 
-
-
-
+    def top(self):
+        
         # label for the text Currency Converter
         self.top_frame = Frame(self.window, bg = self.primary, width = 300, height = 80)
         self.top_frame.grid(row = 0, column = 0)
@@ -40,7 +45,8 @@ class Converter:
                                  font = ('Poppins 20 bold') )
         self.name_label.grid(row = 0, column = 0)
 
-        # bottom frame
+    def botom(self):
+         # bottom frame
         self.bottom_frame = Frame(self.window, width = 300, height = 250)
         self.bottom_frame.grid(row = 1, column = 0)
 
@@ -57,6 +63,7 @@ class Converter:
                               font = ('Poppins 10 bold'), justify = LEFT)
         self.amount_label.place(x = 5, y = 55)
 
+    def combobox(self):
         #combobox for holding from_currencies
         self.from_currency_combo = ttk.Combobox(self.bottom_frame,
                                             values = list(self.currencies.keys()), width = 14,
@@ -68,6 +75,7 @@ class Converter:
                                             font = ('Poppins 10 bold'))
         self.to_currency_combo.place(x = 160, y = 30)
 
+    def converted_amount(self):
         # entry for amount
         self.amount_entry = Entry(self.bottom_frame, width = 25, font = ('Poppins 15 bold'))
         self.amount_entry.place(x = 5, y = 80)
@@ -81,6 +89,7 @@ class Converter:
         self.time_label = Label(self.bottom_frame, text = '', font = ('Poppins 10 bold'))
         self.time_label.place(x = 5, y = 135)
 
+    def press_button(self):
         # the clickable button for converting the currency
         convert_button = Button(self.bottom_frame, text = 'CONVERT', bg = self.secondary, 
                                 fg = self.white, justify = CENTER, font = ('Poppins 10 bold'),
@@ -111,9 +120,6 @@ class Converter:
         
         except:
             showerror(title = 'Error', message = 'An error occurred! Fill all the required filed or check your internet connection.')
-
-        
-
 
 
     def run(self):
